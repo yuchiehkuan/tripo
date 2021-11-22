@@ -554,11 +554,12 @@ var AppComponent = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
-/*! exports provided: AppModule */
+/*! exports provided: startupServiceFactory, AppModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startupServiceFactory", function() { return startupServiceFactory; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _main_navbar_navbar_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main/navbar/navbar.module */ "./src/app/main/navbar/navbar.module.ts");
@@ -568,16 +569,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/fesm2015/agm-core.js");
-/* harmony import */ var _agm_snazzy_info_window__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @agm/snazzy-info-window */ "./node_modules/@agm/snazzy-info-window/fesm2015/agm-snazzy-info-window.js");
-/* harmony import */ var _main_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/common */ "./src/app/main/common/index.ts");
-/* harmony import */ var _main_footbar_footbar_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/footbar/footbar.component */ "./src/app/main/footbar/footbar.component.ts");
-/* harmony import */ var _main_personal_personal_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main/personal/personal.module */ "./src/app/main/personal/personal.module.ts");
-/* harmony import */ var _main_servcies__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/servcies */ "./src/app/main/servcies/index.ts");
-/* harmony import */ var _main_servcies_nav_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/servcies/nav.service */ "./src/app/main/servcies/nav.service.ts");
-/* harmony import */ var _main_user_user_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/user/user.module */ "./src/app/main/user/user.module.ts");
-/* harmony import */ var angular_svg_icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-svg-icon */ "./node_modules/angular-svg-icon/fesm5/angular-svg-icon.js");
-/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/fesm2015/auth0-angular-jwt.js");
+/* harmony import */ var _agm_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @agm/core */ "./node_modules/@agm/core/fesm2015/agm-core.js");
+/* harmony import */ var _agm_snazzy_info_window__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @agm/snazzy-info-window */ "./node_modules/@agm/snazzy-info-window/fesm2015/agm-snazzy-info-window.js");
+/* harmony import */ var _main_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/common */ "./src/app/main/common/index.ts");
+/* harmony import */ var _main_footbar_footbar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./main/footbar/footbar.component */ "./src/app/main/footbar/footbar.component.ts");
+/* harmony import */ var _main_personal_personal_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/personal/personal.module */ "./src/app/main/personal/personal.module.ts");
+/* harmony import */ var _main_servcies__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./main/servcies */ "./src/app/main/servcies/index.ts");
+/* harmony import */ var _main_servcies_nav_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./main/servcies/nav.service */ "./src/app/main/servcies/nav.service.ts");
+/* harmony import */ var _main_servcies_startup_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./main/servcies/startup.service */ "./src/app/main/servcies/startup.service.ts");
+/* harmony import */ var _main_user_user_module__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./main/user/user.module */ "./src/app/main/user/user.module.ts");
+/* harmony import */ var angular_svg_icon__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! angular-svg-icon */ "./node_modules/angular-svg-icon/fesm5/angular-svg-icon.js");
+/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
 
 
 
@@ -596,7 +599,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// export function startupServiceFactory(startupService: StartupService){ return () => startupService.load(); }
+
+
+function startupServiceFactory(startupService) { return function () { return startupService.load(); }; }
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -605,31 +610,46 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
                 // NavbarComponent,
-                _main_footbar_footbar_component__WEBPACK_IMPORTED_MODULE_11__["FootbarComponent"],
-                _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_17__["WelcomeComponent"],
+                _main_footbar_footbar_component__WEBPACK_IMPORTED_MODULE_12__["FootbarComponent"],
+                _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_19__["WelcomeComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
-                _agm_core__WEBPACK_IMPORTED_MODULE_8__["AgmCoreModule"].forRoot({
+                _agm_core__WEBPACK_IMPORTED_MODULE_9__["AgmCoreModule"].forRoot({
                     apiKey: 'AIzaSyCmVGb627S813Q5SoaiuY9UO0rdjBJATkY',
                     language: 'zh-TW',
                     libraries: ['places']
                 }),
-                _agm_snazzy_info_window__WEBPACK_IMPORTED_MODULE_9__["AgmSnazzyInfoWindowModule"],
+                _agm_snazzy_info_window__WEBPACK_IMPORTED_MODULE_10__["AgmSnazzyInfoWindowModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"],
                 // NoopAnimationsModule
-                _main_common__WEBPACK_IMPORTED_MODULE_10__["MaterialModule"],
-                _main_user_user_module__WEBPACK_IMPORTED_MODULE_15__["UserModule"],
-                _main_personal_personal_module__WEBPACK_IMPORTED_MODULE_12__["PersonalModule"],
+                _main_common__WEBPACK_IMPORTED_MODULE_11__["MaterialModule"],
+                _main_user_user_module__WEBPACK_IMPORTED_MODULE_17__["UserModule"],
+                _main_personal_personal_module__WEBPACK_IMPORTED_MODULE_13__["PersonalModule"],
                 _main_navbar_navbar_module__WEBPACK_IMPORTED_MODULE_1__["NavbarModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
-                angular_svg_icon__WEBPACK_IMPORTED_MODULE_16__["AngularSvgIconModule"].forRoot(),
+                angular_svg_icon__WEBPACK_IMPORTED_MODULE_18__["AngularSvgIconModule"].forRoot(),
+                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_8__["JwtModule"].forRoot({
+                    config: {
+                        tokenGetter: function () {
+                            return localStorage.getItem('access_token');
+                        },
+                        allowedDomains: ['http://192.168.192.10:5000'],
+                    }
+                })
             ],
             exports: [],
             providers: [
-                _main_servcies_nav_service__WEBPACK_IMPORTED_MODULE_14__["NavService"],
-                _main_servcies__WEBPACK_IMPORTED_MODULE_13__["UtilsService"],
+                _main_servcies_nav_service__WEBPACK_IMPORTED_MODULE_15__["NavService"],
+                _main_servcies__WEBPACK_IMPORTED_MODULE_14__["UtilsService"],
+                _main_servcies_startup_service__WEBPACK_IMPORTED_MODULE_16__["StartupService"],
+                {
+                    provide: _angular_core__WEBPACK_IMPORTED_MODULE_3__["APP_INITIALIZER"],
+                    useFactory: startupServiceFactory,
+                    deps: [_main_servcies_startup_service__WEBPACK_IMPORTED_MODULE_16__["StartupService"], _angular_core__WEBPACK_IMPORTED_MODULE_3__["Injector"]],
+                    multi: true
+                }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
@@ -4289,6 +4309,72 @@ var NavService = /** @class */ (function () {
         })
     ], NavService);
     return NavService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/servcies/startup.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/main/servcies/startup.service.ts ***!
+  \**************************************************/
+/*! exports provided: StartupService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StartupService", function() { return StartupService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! . */ "./src/app/main/servcies/index.ts");
+/* harmony import */ var _user_service_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../user/service/user.service */ "./src/app/main/user/service/user.service.ts");
+
+
+
+
+
+var StartupService = /** @class */ (function () {
+    function StartupService(injector, utils, userService) {
+        this.injector = injector;
+        this.utils = utils;
+        this.userService = userService;
+    }
+    StartupService.prototype.load = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            return _this.userService.checkUser()
+                .subscribe(function (res) {
+                if (res) {
+                    setInterval(function () {
+                        _this.checkStatus();
+                    }, 1000 * 60 * 5); // check current status every 5 min
+                }
+                resolve(res);
+            }, function (err) {
+                console.log(err);
+                reject(err);
+            });
+        });
+    };
+    StartupService.prototype.checkStatus = function () {
+        if (this.utils.isTokenExpired()) { // if token expired
+            this.userService.logout();
+            var router = this.injector.get(_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]);
+            router.navigate(['/']);
+            console.log('logout due to token expired');
+        }
+    };
+    StartupService.ctorParameters = function () { return [
+        { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injector"] },
+        { type: ___WEBPACK_IMPORTED_MODULE_3__["UtilsService"] },
+        { type: _user_service_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"] }
+    ]; };
+    StartupService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+    ], StartupService);
+    return StartupService;
 }());
 
 
