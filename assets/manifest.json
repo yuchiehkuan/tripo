@@ -1,0 +1,20 @@
+{
+  "name": "Tripo",
+  "short_name": "Tripo",
+  "icons": [
+      {
+          "src": "/assets/logo.png",
+          "type": "image/png",
+          "sizes": "32x32"
+      }
+  ],
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#e6eff7",
+  "theme_color": "#b8dcfa",
+  "description": "Angular5 實作PWA",
+  "dir": "ltr",
+  "lang": "zh-Hant-TW"
+}
