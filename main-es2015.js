@@ -929,8 +929,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppConfig", function() { return AppConfig; });
 class AppConfig {
     constructor() {
-        this.apiUrl = 'http://192.168.192.10:5000/api';
-        // public readonly apiUrl = 'https://tripo-backend-kdn66qm7uq-de.a.run.app/api';
+        // public readonly apiUrl = 'http://192.168.192.10:5000/api';
+        this.apiUrl = 'https://tripo-backend-kdn66qm7uq-de.a.run.app/api';
     }
 }
 
