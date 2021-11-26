@@ -41,7 +41,7 @@ module.exports = "<!-- <app-navbar></app-navbar> -->\n<router-outlet></router-ou
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "  <app-navbar></app-navbar>\n  <div class=\"content-container\" fxLayout=\"column\" fxLayoutAlign=\"stretch\" fxFlex=\"auto\">\n    <swiper class=\"swiper-container\" [config]=\"config\" (indexChange)=\"onIndexChange($event)\" fxFlex=\"auto\">\n      <div *ngFor=\"let slide of slides\" class=\"swiper-slide\">\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" fxFlexFill>\n          <img class=\"previewimg\" [src]=\"slide\" assept=\"img/*\">\n        </div>\n      </div>\n    </swiper>\n    <div class=\"swiper-button-prev swiper-button-white\"></div>\n    <div class=\"swiper-button-next swiper-button-white\"></div>\n  </div>\n\n  <mat-card>\n    <mat-card-header>\n      <mat-card-title>行事曆</mat-card-title>\n    </mat-card-header>\n    <mat-card-content>\n      <h5 class=\"card-title\">2021 / 08 / 09</h5>\n      <p class=\"card-text\">日本大阪三天兩夜</p>\n    </mat-card-content>\n    <mat-card-actions align=\"end\">\n      <a mat-raised-button class=\"travelBtn\" [routerLink]=\"['/travel']\" routerLinkActive=\"active\">Go somewhere</a>\n    </mat-card-actions>\n    <mat-card-footer></mat-card-footer>\n  </mat-card>\n\n  <mat-card class=\"assistant\">\n    <mat-card-header>\n      <mat-card-title>今天想去哪裡？</mat-card-title>\n    </mat-card-header>\n    <mat-card-content>\n      <img mat-card-image src=\"../../../assets/hot-air-balloon.svg\" width=\"200px\">\n    </mat-card-content>\n    <mat-card-footer></mat-card-footer>\n  </mat-card>\n"
+module.exports = "  <app-navbar></app-navbar>\n  <div class=\"content-container\" fxLayout=\"column\" fxLayoutAlign=\"stretch\" fxFlex=\"auto\">\n    <swiper class=\"swiper-container\" [config]=\"config\" (indexChange)=\"onIndexChange($event)\" fxFlex=\"auto\">\n      <div *ngFor=\"let slide of slides\" class=\"swiper-slide\">\n        <div fxLayout=\"column\" fxLayoutAlign=\"center center\" fxFlexFill>\n          <img class=\"previewimg\" [src]=\"slide\" assept=\"img/*\">\n        </div>\n      </div>\n    </swiper>\n    <div class=\"swiper-button-prev swiper-button-white\"></div>\n    <div class=\"swiper-button-next swiper-button-white\"></div>\n  </div>\n\n  <mat-card>\n    <mat-card-header>\n      <mat-card-title>行事曆</mat-card-title>\n    </mat-card-header>\n    <mat-card-content>\n      <h5 class=\"card-title\">2021 / 08 / 09</h5>\n      <p class=\"card-text\">日本大阪三天兩夜</p>\n    </mat-card-content>\n    <mat-card-actions align=\"end\">\n      <a mat-raised-button class=\"travelBtn\" [routerLink]=\"['/travel']\" routerLinkActive=\"active\">Go somewhere</a>\n    </mat-card-actions>\n    <mat-card-footer></mat-card-footer>\n  </mat-card>\n\n  <mat-card class=\"assistant\">\n    <mat-card-header>\n      <!-- <mat-card-title></mat-card-title> -->\n    </mat-card-header>\n    <mat-card-content>\n      <img src=\"assets/assistantSample.png\" width=\"100%\" height=\"auto\">\n    </mat-card-content>\n    <mat-card-footer></mat-card-footer>\n  </mat-card>\n"
 
 /***/ }),
 
@@ -184,7 +184,7 @@ module.exports = "<mat-toolbar class=\"navbar\">\n  <div>\n    <button  mat-icon
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar *ngIf=\"(login$| async)\" class=\"navbar\">\n  <div>\n    <button *ngIf=\"(login$| async) && !(isHandset$ | async)\" mat-icon-button [matMenuTriggerFor]=\"routerMenu\">\n      <mat-icon class=\"menubtn\">menu</mat-icon>\n    </button>\n  </div>\n  <div *ngIf=\"!(isHandset$ | async)\" class=\"divlogo\">\n    <a mat-button routerLink=\"/user/login\">\n      <img src=\"../../../assets/logo.png\" alt=\"LOGO\" class=\"logo\">\n      <!-- <svg-icon src=\"../../../assets/logo.svg\" [svgStyle]=\"{ 'width.px':100 }\"></svg-icon> -->\n    </a>\n  </div>\n  <div *ngIf=\"(isHandset$ | async)\" class=\"divlogo2\">\n    <a mat-button routerLink=\"/user/login\">\n      <img src=\"../../../assets/logo.png\" alt=\"LOGO\" class=\"logo\">\n      <!-- <svg-icon src=\"../../../assets/logo.svg\" [svgStyle]=\"{ 'width.px':100 }\"></svg-icon> -->\n    </a>\n  </div>\n  <!-- <mat-label *ngIf=\"!(login$| async)\">Tripo</mat-label> -->\n  <span class=\"to-right\"></span>\n  <!-- <a mat-button *ngIf=\"!(login$| async)\" routerLink=\"/user/login\">會員登入</a> -->\n  <!-- <button *ngIf=\"!(login$| async) && currentUrl == 'personal'\" mat-button [matMenuTriggerFor]=\"userMenu\">\n    <mat-icon>settings</mat-icon>\n  </button> -->\n  <!-- <a mat-button *ngIf=\"!(login$ | async)\" routerLink=\"\">推播通知</a> -->\n  <div class=\"icon-text\">\n    <button *ngIf=\"(login$| async)\" mat-icon-button [matMenuTriggerFor]=\"massegeMenu\">\n      <mat-icon class=\"bellbtn\">notifications</mat-icon>\n    </button>\n  </div>\n\n</mat-toolbar>\n<!-- User sub menu -->\n<mat-menu x-position=\"before\" #massegeMenu=\"matMenu\" class=\"notification\">\n  <div *ngIf=\"noticeList.length != 0\">\n    <a mat-menu-item *ngFor=\"let notice of noticeList\"\n      routerLink=\"/notice/{{notice.data.notification.id}}\"\n      routerLinkActive=\"active\">\n      <div *ngIf=\"notice.data.notification.read_time != null\" class=\"readed\">\n        <h3 matLine>{{notice.data.notification.title}}</h3>\n        <span align = \"end\">{{notice.data.notification.create_time | date:'yyyy/MM/dd hh:mm:ss'}}</span>\n        <button mat-icon-button type=\"button\" (click)=\"remove(notice.data.notification.id)\"><mat-icon>delete_forever</mat-icon></button>\n      </div>\n      <div *ngIf=\"notice.data.notification.read_time != null\" class=\"unRead\">\n        <div *ngIf=\"notice.data.notification.read_time != null\" class=\"readed\">\n          <h3 matLine>{{notice.data.notification.title}}</h3>\n          <span align = \"end\">{{notice.data.notification.create_time | date:'yyyy/MM/dd hh:mm:ss'}}</span>\n          <button mat-icon-button type=\"button\" (click)=\"remove(notice.data.notification.id)\"><mat-icon>delete_forever</mat-icon></button>\n        </div>\n      </div>\n    </a>\n  </div>\n  <div *ngIf=\"noticeList.length == 0\" class=\"readed\">\n    <button mat-menu-item><mat-icon>find_replace</mat-icon>沒有新消息！</button>\n  </div>\n     <!-- <button mat-menu-item >帳號</button> -->\n  <!-- <button mat-menu-item (click)=\"logout()\" >會員登出</button> -->\n</mat-menu>\n<mat-menu x-position=\"before\" yPosition=\"below\" #routerMenu=\"matMenu\">\n    <a mat-menu-item *ngFor=\"let link of links\" routerLink=\"/{{link.route}}\" routerLinkActive=\"active\" class=\"route\">\n      <mat-icon class=\"bi list-item\">{{link.icon}}</mat-icon>\n      <span class=\"sidebar-font\">{{link.name}}</span>\n    </a>\n    <!-- <div><mat-icon> {{link.icon}} </mat-icon></div> -->\n  <!-- <button mat-menu-item >帳號</button> -->\n  <!-- <button mat-menu-item (click)=\"logout()\" >會員登出</button> -->\n</mat-menu>\n"
+module.exports = "<mat-toolbar *ngIf=\"(login$| async)\" class=\"navbar\">\n  <div>\n    <button *ngIf=\"(login$| async) && !(isHandset$ | async)\" mat-icon-button [matMenuTriggerFor]=\"routerMenu\">\n      <mat-icon class=\"menubtn\">menu</mat-icon>\n    </button>\n  </div>\n  <div *ngIf=\"!(isHandset$ | async)\" class=\"divlogo\">\n    <a mat-button routerLink=\"/user/login\">\n      <img src=\"../../../assets/logo.png\" alt=\"LOGO\" class=\"logo\">\n      <!-- <svg-icon src=\"../../../assets/logo.svg\" [svgStyle]=\"{ 'width.px':100 }\"></svg-icon> -->\n    </a>\n  </div>\n  <div *ngIf=\"(isHandset$ | async)\" class=\"divlogo2\">\n    <a mat-button routerLink=\"/user/login\">\n      <img src=\"../../../assets/logo.png\" alt=\"LOGO\" class=\"logo\">\n      <!-- <svg-icon src=\"../../../assets/logo.svg\" [svgStyle]=\"{ 'width.px':100 }\"></svg-icon> -->\n    </a>\n  </div>\n  <!-- <mat-label *ngIf=\"!(login$| async)\">Tripo</mat-label> -->\n  <span class=\"to-right\"></span>\n  <!-- <a mat-button *ngIf=\"!(login$| async)\" routerLink=\"/user/login\">會員登入</a> -->\n  <!-- <button *ngIf=\"!(login$| async) && currentUrl == 'personal'\" mat-button [matMenuTriggerFor]=\"userMenu\">\n    <mat-icon>settings</mat-icon>\n  </button> -->\n  <!-- <a mat-button *ngIf=\"!(login$ | async)\" routerLink=\"\">推播通知</a> -->\n  <div class=\"icon-text\">\n    <button *ngIf=\"(login$| async)\" mat-icon-button [matMenuTriggerFor]=\"massegeMenu\">\n      <mat-icon class=\"bellbtn\">notifications</mat-icon>\n    </button>\n  </div>\n\n</mat-toolbar>\n<!-- User sub menu -->\n<mat-menu x-position=\"before\" #massegeMenu=\"matMenu\" class=\"notification\">\n  <div *ngIf=\"notification.length > 0\">\n    <button mat-menu-item *ngFor=\"let notice of notification; let i = index\"\n      routerLink=\"/notification/{{notice.id}}\"\n      routerLinkActive=\"active\">\n      <div *ngIf=\"notice.read_time != null\" class=\"readed\">\n        <mat-icon>find_replace</mat-icon>\n        <span matLine>{{notice.title}}</span>\n        <span align = \"end\">{{notice.create_time | date:'yyyy/MM/dd hh:mm:ss'}}</span>\n        <button mat-icon-button type=\"button\" (click)=\"remove(notice.id)\"><mat-icon>delete_forever</mat-icon></button>\n      </div>\n      <div *ngIf=\"notice.read_time == null\" class=\"unRead\">\n        <mat-icon>find_replace</mat-icon>\n        <span matLine>{{notice.title}}</span>\n        <span align = \"end\">{{notice.create_time | date:'yyyy/MM/dd hh:mm:ss'}}</span>\n        <button mat-icon-button type=\"button\" (click)=\"remove(notice.id)\"><mat-icon>delete_forever</mat-icon></button>\n      </div>\n    </button>\n  </div>\n  <div *ngIf=\"noticeList.length == 0\" class=\"readed\">\n    <button mat-menu-item><mat-icon>find_replace</mat-icon>沒有新消息！</button>\n  </div>\n     <!-- <button mat-menu-item >帳號</button> -->\n  <!-- <button mat-menu-item (click)=\"logout()\" >會員登出</button> -->\n</mat-menu>\n<mat-menu x-position=\"before\" yPosition=\"below\" #routerMenu=\"matMenu\">\n    <a mat-menu-item *ngFor=\"let link of links\" routerLink=\"/{{link.route}}\" routerLinkActive=\"active\" class=\"route\">\n      <mat-icon class=\"bi list-item\">{{link.icon}}</mat-icon>\n      <span class=\"sidebar-font\">{{link.name}}</span>\n    </a>\n    <!-- <div><mat-icon> {{link.icon}} </mat-icon></div> -->\n  <!-- <button mat-menu-item >帳號</button> -->\n  <!-- <button mat-menu-item (click)=\"logout()\" >會員登出</button> -->\n</mat-menu>\n"
 
 /***/ }),
 
@@ -195,7 +195,7 @@ module.exports = "<mat-toolbar *ngIf=\"(login$| async)\" class=\"navbar\">\n  <d
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>notice works!</p>\n"
+module.exports = "<app-navbar-back></app-navbar-back>>\n<p>notice works!</p>\n"
 
 /***/ }),
 
@@ -540,17 +540,17 @@ module.exports = "<div class=\"container\">\n  <div class=\"logo\">\n    <img sr
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _main_personal_notice_notice_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main/personal/notice/notice.component */ "./src/app/main/personal/notice/notice.component.ts");
-/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
-/* harmony import */ var _main_assistant_assistant_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main/assistant/assistant.module */ "./src/app/main/assistant/assistant.module.ts");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _main_assistant_assistant_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./main/assistant/assistant.component */ "./src/app/main/assistant/assistant.component.ts");
-/* harmony import */ var _main_communication_communication_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main/communication/communication.component */ "./src/app/main/communication/communication.component.ts");
-/* harmony import */ var _main_communication_communication_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main/communication/communication.module */ "./src/app/main/communication/communication.module.ts");
-/* harmony import */ var _main_travel_travel_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main/travel/travel.module */ "./src/app/main/travel/travel.module.ts");
-/* harmony import */ var _main_share_share_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/share/share.module */ "./src/app/main/share/share.module.ts");
-/* harmony import */ var _main_share_share_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/share/share.component */ "./src/app/main/share/share.component.ts");
+/* harmony import */ var _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./welcome/welcome.component */ "./src/app/welcome/welcome.component.ts");
+/* harmony import */ var _main_assistant_assistant_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main/assistant/assistant.module */ "./src/app/main/assistant/assistant.module.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _main_assistant_assistant_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main/assistant/assistant.component */ "./src/app/main/assistant/assistant.component.ts");
+/* harmony import */ var _main_communication_communication_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./main/communication/communication.component */ "./src/app/main/communication/communication.component.ts");
+/* harmony import */ var _main_communication_communication_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./main/communication/communication.module */ "./src/app/main/communication/communication.module.ts");
+/* harmony import */ var _main_travel_travel_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./main/travel/travel.module */ "./src/app/main/travel/travel.module.ts");
+/* harmony import */ var _main_share_share_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main/share/share.module */ "./src/app/main/share/share.module.ts");
+/* harmony import */ var _main_share_share_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/share/share.component */ "./src/app/main/share/share.component.ts");
+/* harmony import */ var _main_navbar_notice_notice_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./main/navbar/notice/notice.component */ "./src/app/main/navbar/notice/notice.component.ts");
 
 
 
@@ -565,28 +565,28 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     { path: '', redirectTo: '/user', pathMatch: 'full' },
-    { path: 'welcome', component: _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_2__["WelcomeComponent"] },
+    { path: 'welcome', component: _welcome_welcome_component__WEBPACK_IMPORTED_MODULE_1__["WelcomeComponent"] },
     { path: 'user', redirectTo: '/user', pathMatch: 'full' },
-    { path: 'assistant', component: _main_assistant_assistant_component__WEBPACK_IMPORTED_MODULE_6__["AssistantComponent"] },
-    { path: 'notice/:id', component: _main_personal_notice_notice_component__WEBPACK_IMPORTED_MODULE_1__["NoticeComponent"] },
+    { path: 'assistant', component: _main_assistant_assistant_component__WEBPACK_IMPORTED_MODULE_5__["AssistantComponent"] },
+    { path: 'notification/:id', component: _main_navbar_notice_notice_component__WEBPACK_IMPORTED_MODULE_11__["NoticeComponent"] },
     { path: 'travel', redirectTo: '/travel', pathMatch: 'full' },
-    { path: 'share', component: _main_share_share_component__WEBPACK_IMPORTED_MODULE_11__["ShareComponent"] },
-    { path: 'communication', component: _main_communication_communication_component__WEBPACK_IMPORTED_MODULE_7__["CommunicationComponent"] },
+    { path: 'share', component: _main_share_share_component__WEBPACK_IMPORTED_MODULE_10__["ShareComponent"] },
+    { path: 'communication', component: _main_communication_communication_component__WEBPACK_IMPORTED_MODULE_6__["CommunicationComponent"] },
     { path: 'personal', redirectTo: '/personal', pathMatch: 'full' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
         imports: [
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(routes),
-            _main_assistant_assistant_module__WEBPACK_IMPORTED_MODULE_3__["AssistantModule"],
-            _main_travel_travel_module__WEBPACK_IMPORTED_MODULE_9__["TravelModule"],
-            _main_communication_communication_module__WEBPACK_IMPORTED_MODULE_8__["CommunicationModule"],
-            _main_share_share_module__WEBPACK_IMPORTED_MODULE_10__["ShareModule"]
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(routes),
+            _main_assistant_assistant_module__WEBPACK_IMPORTED_MODULE_2__["AssistantModule"],
+            _main_travel_travel_module__WEBPACK_IMPORTED_MODULE_8__["TravelModule"],
+            _main_communication_communication_module__WEBPACK_IMPORTED_MODULE_7__["CommunicationModule"],
+            _main_share_share_module__WEBPACK_IMPORTED_MODULE_9__["ShareModule"]
             // PersonalModule
         ],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"]]
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"]]
     })
 ], AppRoutingModule);
 
@@ -2437,7 +2437,10 @@ let NavbarComponent = class NavbarComponent {
         this.breakpointObserver = breakpointObserver;
         this.snackbar = snackbar;
         this.noticeList = [];
+        // notification: Notification[] = [];
+        this.notifications = [];
         this.notification = [];
+        this.notificatione = [];
         this.links = [{ route: 'assistant', icon: 'home', name: '主頁' }, { route: 'travel', icon: 'edit_road', name: '行程' },
             { route: 'communication', icon: 'people', name: '旅伴' }, { route: 'personal', icon: 'settings', name: '設定' }];
     }
@@ -2459,9 +2462,21 @@ let NavbarComponent = class NavbarComponent {
     }
     getNoticeList() {
         this.noticeList = [];
-        this.not.getNoticeListServer().subscribe(data => this.noticeList.push(data));
-        this.not.getNoticeList().subscribe(noticeList => this.noticeList = noticeList);
+        this.not.getNoticeListServer().subscribe(data => {
+            this.noticeList.push(data);
+            let i = 0;
+            let j = 0;
+            for (i; i < this.noticeList.length; i++) {
+                this.notifications.push(this.noticeList[this.noticeList.length - 1].data.notification);
+                for (j; j < this.notifications[0].length; j++) {
+                    this.notification.push(this.notifications[0][j]);
+                }
+            }
+        });
+        // this.not.getNoticeList().subscribe(noticeList => this.noticeList = noticeList);
         console.log(this.noticeList);
+        console.log(this.notifications);
+        console.log(this.notification);
     }
     remove(id) {
         this.not.removeNotice(id).subscribe(res => {
@@ -2507,14 +2522,16 @@ NavbarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarModule", function() { return NavbarModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _service_notice_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./service/notice.service */ "./src/app/main/navbar/service/notice.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../common */ "./src/app/main/common/index.ts");
-/* harmony import */ var _navbar_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./navbar.component */ "./src/app/main/navbar/navbar.component.ts");
-/* harmony import */ var _notice_notice_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./notice/notice.component */ "./src/app/main/navbar/notice/notice.component.ts");
+/* harmony import */ var _navbar_back_navbarHback_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../navbar-back/navbarHback.module */ "./src/app/main/navbar-back/navbarHback.module.ts");
+/* harmony import */ var _service_notice_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./service/notice.service */ "./src/app/main/navbar/service/notice.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../common */ "./src/app/main/common/index.ts");
+/* harmony import */ var _navbar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./navbar.component */ "./src/app/main/navbar/navbar.component.ts");
+/* harmony import */ var _notice_notice_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./notice/notice.component */ "./src/app/main/navbar/notice/notice.component.ts");
+
 
 
 
@@ -2527,22 +2544,23 @@ __webpack_require__.r(__webpack_exports__);
 let NavbarModule = class NavbarModule {
 };
 NavbarModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_5__["NgModule"])({
         declarations: [
-            _navbar_component__WEBPACK_IMPORTED_MODULE_7__["NavbarComponent"],
-            _notice_notice_component__WEBPACK_IMPORTED_MODULE_8__["NoticeComponent"]
+            _navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
+            _notice_notice_component__WEBPACK_IMPORTED_MODULE_9__["NoticeComponent"]
         ],
         imports: [
-            _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
-            _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
-            _common__WEBPACK_IMPORTED_MODULE_6__["MaterialModule"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
+            _common__WEBPACK_IMPORTED_MODULE_7__["MaterialModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
+            _navbar_back_navbarHback_module__WEBPACK_IMPORTED_MODULE_1__["NavbarHbackModule"]
         ],
         exports: [
-            _navbar_component__WEBPACK_IMPORTED_MODULE_7__["NavbarComponent"]
+            _navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"]
         ],
         providers: [
-            _service_notice_service__WEBPACK_IMPORTED_MODULE_1__["NoticeService"]
+            _service_notice_service__WEBPACK_IMPORTED_MODULE_2__["NoticeService"]
         ]
     })
 ], NavbarModule);
@@ -2597,12 +2615,13 @@ NoticeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*!*******************************************************!*\
   !*** ./src/app/main/navbar/service/notice.service.ts ***!
   \*******************************************************/
-/*! exports provided: NoticeLists, NoticeService */
+/*! exports provided: NoticeLists, Notification, NoticeService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoticeLists", function() { return NoticeLists; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Notification", function() { return Notification; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NoticeService", function() { return NoticeService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
@@ -2617,12 +2636,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const NoticeLists = [];
+const Notification = [];
 let NoticeService = class NoticeService {
     constructor(http, appConfig) {
         this.http = http;
         this.appConfig = appConfig;
         // schedule: TravelRoutes[] = [];
         this.noticeList = [];
+        this.notification = [];
         this.headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': this.appConfig.apiUrl,
